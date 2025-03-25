@@ -15,6 +15,9 @@ public/sitemap.xml
 public/.index/*
 public/Users/Public/**
 
+.DS_Store
+public/.DS_Store
+
 !public/Users/**/desktop.ini
 !public/Users/Public/Desktop
 !public/Users/Public/Desktop/My PC.url
