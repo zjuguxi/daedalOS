@@ -367,7 +367,7 @@ export const PACKAGE_DATA = {
   author: {
     email: "zjuguxi@gmail.com",
     name: "Xi Gu",
-    npub: "npub10uc7hg6wdxhhd7ee8x9c5lr9d0ux7272rv2m0mc03ds54q7quxjss02r3p",
+    npub: "be4885b6ec16ecdb6de36eff025b1550e4e90ac6cfe410e0c889e302e965dde5",
     url: "xigublog.netlify.app",
   },
   description: "A very joyful place",
