@@ -232,6 +232,14 @@
       "rules": {
         "playwright/no-standalone-expect": "off"
       }
+    },
+    {
+      "files": ["scripts/**/*.js"],
+      "parserOptions": {
+        "project": null,
+        "ecmaVersion": 2020,
+        "sourceType": "module"
+      }
     }
   ],
   "reportUnusedDisableDirectives": true,
