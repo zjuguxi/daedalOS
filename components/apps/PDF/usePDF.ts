@@ -110,17 +110,15 @@ const usePDF = (
           const doc = await loader.promise;
           const { info } = await doc.getMetadata();
 
-          pdfWorker.current = loader._worker as PDFWorker;
+          pdfWorker.current = (
+            loader as unknown as { _worker: PDFWorker }
+          )._worker;
 
-          const metadataTitle = (info as MetadataInfo).Title;
-          argument(id, "subTitle", metadataTitle);
-          argument(id, "count", doc?.numPages ?? 0);
+          const { Title } = info as MetadataInfo;
 
-          if (metadataTitle !== undefined && metadataTitle !== null) {
-            prependFileToTitle(metadataTitle);
-          } else {
-            prependFileToTitle(basename(url));
-          }
+          argument(id, "subTitle", Title);
+          argument(id, "count", doc.numPages);
+          prependFileToTitle(Title || basename(url));
 
           abortControllerRef.current = new AbortController();
 
