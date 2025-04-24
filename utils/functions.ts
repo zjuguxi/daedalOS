@@ -1170,9 +1170,6 @@ export const generatePrettyTimestamp = (): string =>
 export const isFileSystemMappingSupported = (): boolean =>
   typeof FileSystemHandle === "function" && "showDirectoryPicker" in window;
 
-export const hasSharedArrayBuffer = (): boolean =>
-  window.crossOriginIsolated && typeof SharedArrayBuffer === "function";
-
 export const hasFinePointer = (): boolean =>
   window.matchMedia("(pointer: fine)").matches;
 
@@ -1206,3 +1203,16 @@ export const shouldCaptureDragImage = (
   entryCount: number,
   isDesktop = false
 ): boolean => entryCount > 1 || (!isDesktop && entryCount === 1 && isSafari());
+
+export const maybeRequestIdleCallback = (
+  callback: () => void | Promise<void>
+): void => {
+  if (
+    "requestIdleCallback" in window &&
+    typeof window.requestIdleCallback === "function"
+  ) {
+    requestIdleCallback(callback);
+  } else {
+    callback();
+  }
+};
